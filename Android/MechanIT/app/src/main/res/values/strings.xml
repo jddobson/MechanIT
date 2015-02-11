@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MechanIT</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maintenance">Maintenance</string>
+    <string name="title_activity_engine_code">EngineCode</string>
+    <string name="title_activity_error_code">ErrorCode</string>
+    <string name="title_activity_oil_life">OilLife</string>
+    <string name="title_activity_tire_life">TireLife</string>
+    <string name="title_activity_spark_plug">SparkPlug</string>
+    <string name="title_activity_trip_data">TripData</string>
+    <string name="title_activity_nav_drawer">NavDrawer</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_car_name">CarName</string>
+    <string name="title_activity_car_make">CarMake</string>
+    <string name="title_activity_oil_par">OilPar</string>
+    <string name="title_activity_splug_par">SPlugPar</string>
+    <string name="title_activity_tire_par">TirePar</string>
+    <string name="title_activity_notes">Notes</string>
+    <string name="title_activity_new_note">NewNote</string>
+
+</resources>
