@@ -10,6 +10,7 @@
     <!-- Main Menu strings -->
     <string name="user_info">User Information</string>
     <string name="settings">Settings</string>
+    <string name="syncData">Sync Data</string>
 
     <!-- New car form strings -->
     <string name="car_nickname">Nickname:</string>
@@ -23,4 +24,11 @@
     <string name="save_settings">User information has been saved.</string>
     <string name="save_letters_only">Please only use letters.</string>
     <string name="save_numbers_only">Please only use numbers.</string>
+    <string name="title_activity_sync_data">SyncData</string>
+
+    <!-- Sync Data strings -->
+    <string name="success">Data Synchronization Successful</string>
+    <string name="failure">Data Synchronization Unsuccessful</string>
+    <string name="noBluetooth">This phone does not support Bluetooth.</string>
+
 </resources>

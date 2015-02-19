@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mechanit.mechanitdroidapp" >
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +28,14 @@
         <activity
             android:name=".ViewUserInfo"
             android:label="@string/title_activity_view_user_info"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mechanit.mechanitdroidapp.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SyncData"
+            android:label="@string/title_activity_sync_data"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -50,4 +50,10 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, EditSettings.class);
         startActivity(intent);
     }
+
+    /** Called when the user clicks the Sync Data button */
+    public void syncData (View view) {
+        Intent intent = new Intent(this, SyncData.class);
+        startActivity(intent);
+    }
 }
