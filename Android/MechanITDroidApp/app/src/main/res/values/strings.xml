@@ -27,8 +27,8 @@
     <string name="title_activity_sync_data">SyncData</string>
 
     <!-- Sync Data strings -->
-    <string name="success">Data Synchronization Successful</string>
-    <string name="failure">Data Synchronization Unsuccessful</string>
-    <string name="noBluetooth">This phone does not support Bluetooth.</string>
+    <string name="successText">Data Synchronization Successful</string>
+    <string name="failureText">Data Synchronization Unsuccessful</string>
+    <string name="noBluetoothText">This phone does not support Bluetooth.</string>
 
 </resources>
