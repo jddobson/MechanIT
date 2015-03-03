@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 public class EditSettings extends ActionBarActivity {
+    //Setup Text Views
     TextView nickname;
     TextView make;
     TextView model;
