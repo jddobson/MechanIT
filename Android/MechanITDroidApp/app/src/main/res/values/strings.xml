@@ -30,5 +30,6 @@
     <string name="successText">Data Synchronization Successful</string>
     <string name="failureText">Data Synchronization Unsuccessful</string>
     <string name="noBluetoothText">This phone does not support Bluetooth.</string>
+    <string name="sync_textView">Sync Success:</string>
 
 </resources>

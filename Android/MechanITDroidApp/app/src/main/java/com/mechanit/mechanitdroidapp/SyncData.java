@@ -1,7 +1,6 @@
 package com.mechanit.mechanitdroidapp;
 
 import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -14,12 +13,17 @@ import android.widget.TextView;
 public class SyncData extends ActionBarActivity {
 
     private final static int REQUEST_ENABLE_BT = 1;
-    TextView syncSuccess = (TextView) findViewById(R.id.syncSuccess);
+    TextView syncSuccess;
+    BluetoothAdapter btAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sync_data);
+
+        syncSuccess = (TextView) findViewById(R.id.view_syncSuccess);
+
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
 
     }
 
@@ -47,7 +51,6 @@ public class SyncData extends ActionBarActivity {
     }
 
     public void blueConnect() {
-        BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
         if (btAdapter == null) {
             // Device not bluetooth enabled
             syncSuccess.setText(R.string.noBluetoothText);
@@ -56,6 +59,10 @@ public class SyncData extends ActionBarActivity {
         else if (!btAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        }
+
+        else {
+            syncSuccess.setText(R.string.successText);
         }
     }
 
