@@ -60,7 +60,7 @@ public class SyncData extends ActionBarActivity {
     }
 
     public void syncData (View view) {
-        
+        blueConnect();
     }
 
 }
