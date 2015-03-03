@@ -9,7 +9,10 @@
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+=======
+>>>>>>> 01d1bbcb78711c41880c4afea1fe159fca03b3bb
 
     <application
         android:allowBackup="true"

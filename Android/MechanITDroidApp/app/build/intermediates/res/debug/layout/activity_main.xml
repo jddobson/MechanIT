@@ -35,8 +35,11 @@
         android:text="@string/syncData"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
+<<<<<<< HEAD
         android:layout_below="@+id/settings"
+=======
+>>>>>>> 01d1bbcb78711c41880c4afea1fe159fca03b3bb
         android:onClick="syncData"/>
 
 </RelativeLayout>
-<!-- From: file:/C:/Users/Rameina91/MechanIT/Android/MechanITDroidApp/app/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/C:/Users/Michael/Desktop/Capstone/Android/MechanITDroidApp/app/src/main/res/layout/activity_main.xml -->
