@@ -55,7 +55,13 @@
         android:layout_height="35dp"
         android:text=""
         android:layout_centerHorizontal="true"
+<<<<<<< HEAD
         android:layout_marginTop="5dp"
         android:layout_below="@+id/title"/>
+=======
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/settings"
+        android:onClick="syncData"/>
+>>>>>>> aab871ff928e6349cbd4d183be447d3eeb140d7e
 
 </RelativeLayout>
