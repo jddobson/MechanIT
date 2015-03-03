@@ -11,6 +11,9 @@
     <string name="user_info">User Information</string>
     <string name="settings">Settings</string>
     <string name="syncData">Sync Data</string>
+    <string name="title">MechanIT</string>
+    <string name="car_name">Car Name</string>
+
 
     <!-- New car form strings -->
     <string name="car_nickname">Nickname:</string>
