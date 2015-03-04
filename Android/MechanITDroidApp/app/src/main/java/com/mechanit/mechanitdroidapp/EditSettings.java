@@ -139,13 +139,7 @@ public class EditSettings extends ActionBarActivity {
         return true;
     }
 
-    public void main(String[] arg) {
-        SharedPreferences.Editor edit = userInfo.edit();
 
-
-
-
-    }
 
 
     public void saveUserInfo() {
