@@ -169,6 +169,7 @@
     <string name="car_model">Model:</string>
     <string name="car_nickname">Nickname:</string>
     <string name="car_year">Year:</string>
+    <string name="discoverable">Make Discoverable</string>
     <string name="edit_message">Empty</string>
     <string name="failureText">Data Synchronization Unsuccessful</string>
     <string name="hello_world">Hello world!</string>

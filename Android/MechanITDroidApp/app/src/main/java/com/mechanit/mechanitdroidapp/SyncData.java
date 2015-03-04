@@ -8,13 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class SyncData extends ActionBarActivity {
 
-    private final static int REQUEST_ENABLE_BT = 1;
+    private final static int REQUEST_ENABLE_BT = 0;
     TextView syncSuccess;
-    BluetoothAdapter btAdapter;
+    private BluetoothAdapter btAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,6 @@ public class SyncData extends ActionBarActivity {
         setContentView(R.layout.activity_sync_data);
 
         syncSuccess = (TextView) findViewById(R.id.view_syncSuccess);
-
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
     }
@@ -50,24 +50,22 @@ public class SyncData extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void blueConnect() {
-        if (btAdapter == null) {
-            // Device not bluetooth enabled
-            syncSuccess.setText(R.string.noBluetoothText);
-        }
-
-        else if (!btAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-        }
-
-        else {
-            syncSuccess.setText(R.string.successText);
+    public void blueConnect(View view) {
+        if (!btAdapter.isEnabled()) {
+            Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(turnOn, 0);
+            Toast.makeText(getApplicationContext(), "Turned on", Toast.LENGTH_LONG).show();
         }
     }
 
+    public void visible(View view){
+        Intent getVisible = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        startActivityForResult(getVisible, 0);
+    }
+
     public void syncData (View view) {
-        blueConnect();
+
+        blueConnect(view);
     }
 
 }

@@ -31,5 +31,6 @@
     <string name="failureText">Data Synchronization Unsuccessful</string>
     <string name="noBluetoothText">This phone does not support Bluetooth.</string>
     <string name="sync_textView">Sync Success:</string>
+    <string name="discoverable">Make Discoverable</string>
 
 </resources>
