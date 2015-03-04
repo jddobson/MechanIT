@@ -15,25 +15,28 @@ public class MainActivity extends ActionBarActivity {
 
     TextView nickname;
 
+
     public static final String Nickname = "nicknameKey";
 
-    SharedPreferences userInfo;
 
+    public SharedPreferences userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nickname = (TextView) findViewById(R.id.view_nickname);
+
+        nickname = (TextView) findViewById(R.id.car_name);
+
 
         userInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
-        if (userInfo.contains(Nickname))
-        {
-            nickname.setText(userInfo.getString(Nickname, ""));
+       if (userInfo.contains(Nickname))
+       {
+           nickname.setText(userInfo.getString(Nickname, ""));
 
-        }
+       }
     }
 
 

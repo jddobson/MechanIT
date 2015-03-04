@@ -88,6 +88,7 @@
             android:id="@+id/edit_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:hint="@string/edit_message" />
 
     </LinearLayout>
@@ -110,15 +111,88 @@
             android:id="@+id/edit_mileage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:hint="@string/edit_message" />
 
     </LinearLayout>
 
-    <Button
+    <LinearLayout
+        android:id="@+id/tire_para_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/car_mileage_layout">
+
+
+
+        <TextView
+            android:id="@+id/tire_para_textView"
+            android:text="Tire Change:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/edit_tire_para"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_message"
+
+            android:text="" />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:id="@+id/oil_para_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/tire_para_layout">
+
+
+
+    <TextView
+        android:id="@+id/oil_para_textView"
+        android:text="Oil Change:"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edit_oil_para"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_message"
+
+        android:text="" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/spark_para_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/oil_para_layout">
+
+
+
+        <TextView
+            android:id="@+id/spark_para_textView"
+            android:text="Spark Plug Change:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/edit_spark_para"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="@string/edit_message"
+            android:text="" />
+
+    </LinearLayout>
+
+    <Button
+       android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="sendMessage"
-        android:layout_below="@id/car_mileage_layout"
+        android:layout_below="@id/spark_para_layout"
         android:text="@string/button_send"/>
 
 </RelativeLayout>

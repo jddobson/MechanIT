@@ -19,14 +19,21 @@ public class EditSettings extends ActionBarActivity {
     TextView model;
     TextView year;
     TextView mileage;
+    TextView tire;
+    TextView oil;
+    TextView spark;
+
 
     public static final String Nickname = "nicknameKey";
     public static final String Make = "makeKey";
     public static final String Model = "modelKey";
     public static final String Year = "yearKey";
     public static final String Mileage = "mileageKey";
+    public static final String Tire = "tireKey";
+    public static final String Oil = "oilKey";
+    public static final String Spark = "sparkKey";
 
-    SharedPreferences userInfo;
+    public SharedPreferences userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,9 @@ public class EditSettings extends ActionBarActivity {
         model = (TextView) findViewById(R.id.edit_model);
         year = (TextView) findViewById(R.id.edit_year);
         mileage = (TextView) findViewById(R.id.edit_mileage);
+        tire = (TextView) findViewById(R.id.edit_tire_para);
+        oil = (TextView) findViewById(R.id.edit_oil_para);
+        spark = (TextView) findViewById(R.id.edit_spark_para);
 
         userInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
@@ -64,6 +74,24 @@ public class EditSettings extends ActionBarActivity {
         if (userInfo.contains(Mileage))
         {
             mileage.setText(userInfo.getString(Mileage,""));
+
+        }
+
+        if (userInfo.contains(Tire))
+        {
+            tire.setText(userInfo.getString(Tire,""));
+
+        }
+
+        if (userInfo.contains(Oil))
+        {
+            oil.setText(userInfo.getString(Oil,""));
+
+        }
+
+        if (userInfo.contains(Spark))
+        {
+            spark.setText(userInfo.getString(Spark,""));
 
         }
     }
@@ -111,12 +139,26 @@ public class EditSettings extends ActionBarActivity {
         return true;
     }
 
+    public void main(String[] arg) {
+        SharedPreferences.Editor edit = userInfo.edit();
+
+
+
+
+    }
+
+
     public void saveUserInfo() {
         EditText editNickname = (EditText) findViewById(R.id.edit_nickname);
         EditText editMake = (EditText) findViewById(R.id.edit_make);
         EditText editModel = (EditText) findViewById(R.id.edit_model);
         EditText editYear = (EditText) findViewById(R.id.edit_year);
         EditText editMileage = (EditText) findViewById(R.id.edit_mileage);
+        EditText editTire = (EditText) findViewById(R.id.edit_tire_para);
+        EditText editOil = (EditText) findViewById(R.id.edit_oil_para);
+        EditText editSpark = (EditText) findViewById(R.id.edit_spark_para);
+
+
 
         SharedPreferences.Editor edit = userInfo.edit();
 
@@ -130,6 +172,9 @@ public class EditSettings extends ActionBarActivity {
                             edit.putString("modelKey", editModel.getText().toString().trim());
                             edit.putString("yearKey", editYear.getText().toString().trim());
                             edit.putString("mileageKey", editMileage.getText().toString().trim());
+                            edit.putString("tireKey", editTire.getText().toString().trim());
+                            edit.putString("oilKey", editOil.getText().toString().trim());
+                            edit.putString("sparkKey", editSpark.getText().toString().trim());
 
                             edit.commit();
 

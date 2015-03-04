@@ -15,6 +15,7 @@
         android:layout_height="70dp"
         android:text="@string/user_info"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/car_name"
         android:onClick="viewUserInfo"/>
 
@@ -24,6 +25,7 @@
         android:layout_height="70dp"
         android:text="@string/settings"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="70dp"
         android:layout_below="@+id/userInfo"
         android:onClick="editSettings"/>
@@ -36,6 +38,7 @@
         android:onClick="syncData"
         android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/settings"
          />
     <TextView
@@ -43,6 +46,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
+
         android:textSize="40dp"
         android:textColor="#000"
         android:layout_marginTop="1dp"
@@ -54,14 +58,13 @@
         android:layout_width="100dp"
         android:layout_height="35dp"
         android:text=""
+        android:textSize="20dp"
         android:layout_centerHorizontal="true"
-<<<<<<< HEAD
+        android:layout_centerVertical="true"
         android:layout_marginTop="5dp"
+        android:textColor="#000"
         android:layout_below="@+id/title"/>
-=======
-        android:layout_marginTop="100dp"
-        android:layout_below="@+id/settings"
-        android:onClick="syncData"/>
->>>>>>> aab871ff928e6349cbd4d183be447d3eeb140d7e
+
+
 
 </RelativeLayout>
