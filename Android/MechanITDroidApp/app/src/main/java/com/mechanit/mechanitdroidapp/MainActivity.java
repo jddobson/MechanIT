@@ -1,20 +1,44 @@
 package com.mechanit.mechanitdroidapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    TextView nickname;
+
+
+    public static final String Nickname = "nicknameKey";
+
+
+    public SharedPreferences userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        nickname = (TextView) findViewById(R.id.car_name);
+
+
+        userInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+       if (userInfo.contains(Nickname))
+       {
+           nickname.setText(userInfo.getString(Nickname, ""));
+
+       }
     }
+
 
 
     @Override

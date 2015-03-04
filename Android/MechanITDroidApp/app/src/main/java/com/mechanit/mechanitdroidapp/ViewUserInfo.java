@@ -15,14 +15,22 @@ public class ViewUserInfo extends ActionBarActivity {
     TextView model;
     TextView year;
     TextView mileage;
+    TextView tire;
+    TextView oil;
+    TextView spark;
+
+
 
     public static final String Nickname = "nicknameKey";
     public static final String Make = "makeKey";
     public static final String Model = "modelKey";
     public static final String Year = "yearKey";
     public static final String Mileage = "mileageKey";
+    public static final String Tire = "tireKey";
+    public static final String Oil = "oilKey";
+    public static final String Spark = "sparkKey";
 
-    SharedPreferences userInfo;
+    public SharedPreferences userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,9 @@ public class ViewUserInfo extends ActionBarActivity {
         model = (TextView) findViewById(R.id.view_model);
         year = (TextView) findViewById(R.id.view_year);
         mileage = (TextView) findViewById(R.id.view_mileage);
+        tire = (TextView) findViewById(R.id.view_tire_para);
+        oil = (TextView) findViewById(R.id.view_oil_para);
+        spark = (TextView) findViewById(R.id.view_spark_para);
 
         userInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
@@ -60,6 +71,24 @@ public class ViewUserInfo extends ActionBarActivity {
         if (userInfo.contains(Mileage))
         {
             mileage.setText(userInfo.getString(Mileage,""));
+
+        }
+
+        if (userInfo.contains(Tire))
+        {
+            tire.setText(userInfo.getString(Tire,""));
+
+        }
+
+        if (userInfo.contains(Oil))
+        {
+            oil.setText(userInfo.getString(Oil,""));
+
+        }
+
+        if (userInfo.contains(Spark))
+        {
+            spark.setText(userInfo.getString(Spark,""));
 
         }
     }
