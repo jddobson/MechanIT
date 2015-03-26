@@ -1315,11 +1315,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f08002e;
         public static final int action_mode_bar_stub=0x7f08002d;
         public static final int action_mode_close_button=0x7f080020;
-<<<<<<< HEAD
-        public static final int action_settings=0x7f080063;
-=======
-        public static final int action_settings=0x7f080072;
->>>>>>> 6bf4226b5e6e3d740bf09c1e25136a811b289032
+        public static final int action_settings=0x7f080074;
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
         public static final int beginning=0x7f080013;
@@ -1335,6 +1331,7 @@ containing a value of this type.
         public static final int car_year_layout=0x7f080048;
         public static final int car_year_textView=0x7f080049;
         public static final int checkbox=0x7f080029;
+        public static final int cmdButton=0x7f08005c;
         public static final int collapseActionView=0x7f080017;
         public static final int decor_content_parent=0x7f08002f;
         public static final int default_activity_button=0x7f080024;
@@ -1358,9 +1355,9 @@ containing a value of this type.
         public static final int icon=0x7f080026;
         public static final int ifRoom=0x7f080018;
         public static final int image=0x7f080023;
-        public static final int isDiscoverable=0x7f080051;
         public static final int listMode=0x7f080009;
         public static final int list_item=0x7f080025;
+        public static final int manButton=0x7f08005b;
         public static final int middle=0x7f080015;
         public static final int never=0x7f080019;
         public static final int none=0x7f08000e;
@@ -1396,51 +1393,30 @@ containing a value of this type.
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;
-<<<<<<< HEAD
-        public static final int userInfo=0x7f08004e;
-        public static final int view_make=0x7f080059;
-        public static final int view_make_layout=0x7f080057;
-        public static final int view_make_textView=0x7f080058;
-        public static final int view_mileage=0x7f080062;
-        public static final int view_mileage_layout=0x7f080060;
-        public static final int view_mileage_textView=0x7f080061;
-        public static final int view_model=0x7f08005c;
-        public static final int view_model_layout=0x7f08005a;
-        public static final int view_model_textView=0x7f08005b;
-        public static final int view_nickname=0x7f080056;
-        public static final int view_nickname_layout=0x7f080054;
-        public static final int view_nickname_textView=0x7f080055;
-        public static final int view_syncSuccess=0x7f080053;
-        public static final int view_sync_textView=0x7f080052;
-        public static final int view_year=0x7f08005f;
-        public static final int view_year_layout=0x7f08005d;
-        public static final int view_year_textView=0x7f08005e;
-=======
         public static final int userInfo=0x7f080057;
-        public static final int view_make=0x7f080062;
-        public static final int view_make_layout=0x7f080060;
-        public static final int view_make_textView=0x7f080061;
-        public static final int view_mileage=0x7f08006b;
-        public static final int view_mileage_layout=0x7f080069;
-        public static final int view_mileage_textView=0x7f08006a;
-        public static final int view_model=0x7f080065;
-        public static final int view_model_layout=0x7f080063;
-        public static final int view_model_textView=0x7f080064;
-        public static final int view_nickname=0x7f08005f;
-        public static final int view_nickname_layout=0x7f08005d;
-        public static final int view_nickname_textView=0x7f08005e;
-        public static final int view_oil_para=0x7f08006f;
-        public static final int view_oil_textView=0x7f08006e;
-        public static final int view_spark_para=0x7f080071;
-        public static final int view_spark_textView=0x7f080070;
-        public static final int view_syncSuccess=0x7f08005c;
-        public static final int view_sync_textView=0x7f08005b;
-        public static final int view_tire_para=0x7f08006d;
-        public static final int view_tire_textView=0x7f08006c;
-        public static final int view_year=0x7f080068;
-        public static final int view_year_layout=0x7f080066;
-        public static final int view_year_textView=0x7f080067;
->>>>>>> 6bf4226b5e6e3d740bf09c1e25136a811b289032
+        public static final int view_make=0x7f080064;
+        public static final int view_make_layout=0x7f080062;
+        public static final int view_make_textView=0x7f080063;
+        public static final int view_mileage=0x7f08006d;
+        public static final int view_mileage_layout=0x7f08006b;
+        public static final int view_mileage_textView=0x7f08006c;
+        public static final int view_model=0x7f080067;
+        public static final int view_model_layout=0x7f080065;
+        public static final int view_model_textView=0x7f080066;
+        public static final int view_nickname=0x7f080061;
+        public static final int view_nickname_layout=0x7f08005f;
+        public static final int view_nickname_textView=0x7f080060;
+        public static final int view_oil_para=0x7f080071;
+        public static final int view_oil_textView=0x7f080070;
+        public static final int view_spark_para=0x7f080073;
+        public static final int view_spark_textView=0x7f080072;
+        public static final int view_syncSuccess=0x7f08005e;
+        public static final int view_sync_textView=0x7f08005d;
+        public static final int view_tire_para=0x7f08006f;
+        public static final int view_tire_textView=0x7f08006e;
+        public static final int view_year=0x7f08006a;
+        public static final int view_year_layout=0x7f080068;
+        public static final int view_year_textView=0x7f080069;
         public static final int withText=0x7f08001a;
         public static final int wrap_content=0x7f08001d;
     }
@@ -1506,40 +1482,27 @@ containing a value of this type.
         public static final int car_make=0x7f0a0013;
         public static final int car_mileage=0x7f0a0014;
         public static final int car_model=0x7f0a0015;
-<<<<<<< HEAD
-        public static final int car_nickname=0x7f0a0016;
-        public static final int car_year=0x7f0a0017;
-        public static final int discoverable=0x7f0a0018;
-=======
         public static final int car_name=0x7f0a0016;
         public static final int car_nickname=0x7f0a0017;
         public static final int car_year=0x7f0a0018;
->>>>>>> 6bf4226b5e6e3d740bf09c1e25136a811b289032
-        public static final int edit_message=0x7f0a0019;
-        public static final int failureText=0x7f0a001a;
-        public static final int hello_world=0x7f0a001b;
-        public static final int noBluetoothText=0x7f0a001c;
-        public static final int save_letters_only=0x7f0a001d;
-        public static final int save_numbers_only=0x7f0a001e;
-        public static final int save_settings=0x7f0a001f;
-        public static final int settings=0x7f0a0020;
-        public static final int successText=0x7f0a0021;
-        public static final int syncData=0x7f0a0022;
-        public static final int sync_textView=0x7f0a0023;
-<<<<<<< HEAD
-        public static final int title_activity_display_message=0x7f0a0024;
-        public static final int title_activity_edit_settings=0x7f0a0025;
-        public static final int title_activity_sync_data=0x7f0a0026;
-        public static final int title_activity_view_user_info=0x7f0a0027;
-        public static final int user_info=0x7f0a0028;
-=======
-        public static final int title=0x7f0a0024;
-        public static final int title_activity_display_message=0x7f0a0025;
-        public static final int title_activity_edit_settings=0x7f0a0026;
-        public static final int title_activity_sync_data=0x7f0a0027;
-        public static final int title_activity_view_user_info=0x7f0a0028;
-        public static final int user_info=0x7f0a0029;
->>>>>>> 6bf4226b5e6e3d740bf09c1e25136a811b289032
+        public static final int discoverable=0x7f0a0019;
+        public static final int edit_message=0x7f0a001a;
+        public static final int failureText=0x7f0a001b;
+        public static final int hello_world=0x7f0a001c;
+        public static final int noBluetoothText=0x7f0a001d;
+        public static final int save_letters_only=0x7f0a001e;
+        public static final int save_numbers_only=0x7f0a001f;
+        public static final int save_settings=0x7f0a0020;
+        public static final int settings=0x7f0a0021;
+        public static final int successText=0x7f0a0022;
+        public static final int syncData=0x7f0a0023;
+        public static final int sync_textView=0x7f0a0024;
+        public static final int title=0x7f0a0025;
+        public static final int title_activity_display_message=0x7f0a0026;
+        public static final int title_activity_edit_settings=0x7f0a0027;
+        public static final int title_activity_sync_data=0x7f0a0028;
+        public static final int title_activity_view_user_info=0x7f0a0029;
+        public static final int user_info=0x7f0a002a;
     }
     public static final class style {
         /**  Customize your theme here. 

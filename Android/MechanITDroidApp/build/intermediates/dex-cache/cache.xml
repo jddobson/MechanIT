@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Michael\Desktop\Capstone\Android\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Michael\Desktop\Capstone\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-890553384c8a17e63f5260f875e5fa85037ccbb6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Michael\Desktop\Capstone\Android\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Michael\Desktop\Capstone\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-a0b3a8cb52f190ee770f7ed4f4088bc291253d51.jar" />
+        <dex dex="C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-b803f6a1c91e50fc4ea9e77ac56f6a070c5d2148.jar" />
     </item>
     <item
-        jar="C:\Users\Michael\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Michael\Desktop\Capstone\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-3527c4c9e551775e2d07159c7eb9ffda2c639324.jar" />
-    </item>
-    <item
-        jar="C:\Users\Michael\Desktop\Capstone\Android\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Michael\Desktop\Capstone\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-7a6e79c4eb0d2202930d45422c3db247a3870c71.jar" />
+        <dex dex="C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-3388593bc8f03ab42b696d33184c65bab5c6a517.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-587b9e203aeed782ca1679bda63c03e604df95e4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rameina91\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-e212c77bc83a3d42fa3d4951c8fc16dec377ba20.jar" />
     </item>
 
 </items>
