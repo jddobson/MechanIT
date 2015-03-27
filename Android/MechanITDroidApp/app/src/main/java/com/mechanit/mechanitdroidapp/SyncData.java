@@ -2,24 +2,15 @@ package com.mechanit.mechanitdroidapp;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -32,11 +23,9 @@ public class SyncData extends ActionBarActivity {
 
     private BluetoothAdapter adapter;
     private BluetoothSocket socket;
-    private OutputStream outStream;
+    private BluetoothDevice device;
 
     TextView syncSuccess;
-
-    String cmd;
 
     // Well known SPP UUID
     private static final UUID MY_UUID =
@@ -75,29 +64,12 @@ public class SyncData extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void closeConnection() {
-        changeT("...In closeConnection()...");
 
-        if (outStream != null) {
-            try {
-                outStream.flush();
-            } catch (IOException e) {
-                errorExit("Fatal Error", "In onPause() and failed to flush output stream: " + e.getMessage() + ".");
-            }
-        }
 
-        if (socket != null) {
-            try {
-                socket.close();
-            } catch (IOException e2) {
-                errorExit("Fatal Error", "In onPause() and failed to close socket." + e2.getMessage() + ".");
-            }
-        }
-    }
-
-    public void changeT(String str)
+    public void changeT(String message)
     {
-        syncSuccess.setText(str);
+        Toast str = Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT);
+        str.show();
     }
 
     public void btState(View view) {
@@ -124,31 +96,31 @@ public class SyncData extends ActionBarActivity {
         finish();
     }
 
-    private void sendData(String cmd) {
-        byte[] msgBuffer = cmd.getBytes();
-
-        changeT("...Sending command: " + cmd + "...");
-
-        try {
-            outStream.write(msgBuffer);
-        } catch (IOException e) {
-            String msg = "In sendData() and an exception occurred during write: " + e.getMessage();
-            msg = msg +  ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
-
-            errorExit("Fatal Error", msg);
-        }
+    public void blueConnect(View view) {
+        makeDevice();
+        makeSocket();
+        makeConnection();
+        recStream();
+        closeConnection();
     }
 
-    public void blueConnect(View view) {
+    public void blueSender(View view) {
+        makeDevice();
+        makeSocket();
+        makeConnection();
+        sendStream();
+        closeConnection();
+    }
 
+    public void makeDevice() {
         // Server's Bluetooth address
         String address = "00:12:6F:20:37:9D";
 
-        changeT("...In blueConnect - Attempting client connect...");
-
         // Set up a pointer to the remote node using it's address.
-        BluetoothDevice device = adapter.getRemoteDevice(address);
+        device = adapter.getRemoteDevice(address);
+    }
 
+    public void makeSocket() {
         // Two things are needed to make a connection:
         //   A MAC address, which we got above.
         //   A Service ID or UUID.  In this case we are using the
@@ -156,41 +128,71 @@ public class SyncData extends ActionBarActivity {
         try {
             socket = device.createRfcommSocketToServiceRecord(MY_UUID);
         } catch (IOException e) {
-            errorExit("Fatal Error", "In blueConnect() and socket create failed: " + e.getMessage() + ".");
+            errorExit("Fatal Error", "In blueConnect() and socket create failed: "
+                    + e.getMessage() + ".");
         }
+    }
 
-        // Discovery is resource intensive.  Make sure it isn't going on
-        // when you attempt to connect and pass your message.
-        adapter.cancelDiscovery();
+    public void makeConnection() {
 
         // Establish the connection.  This will block until it connects.
-        changeT("...Connecting to Remote...");
         try {
             socket.connect();
-            changeT("...Connection established and data link opened...");
+            //changeT("...Connection established and data link opened...");
         } catch (IOException e) {
+            changeT("Connection Failed");}
+    }
+
+    public void closeConnection() {
+
+        if (socket != null) {
             try {
-                outStream = socket.getOutputStream();
-            } catch (IOException s) {
-                errorExit("Fatal Error", "In blueConnect() and output stream creation failed:" + e.getMessage() + ".");
-            }
-            if (cmd != null) {
-                try {
-                    sendData(cmd);
-                } finally {
-                    closeConnection();
-                }
-            }
-            try {
-               socket.close();
+                socket.close();
             } catch (IOException e2) {
-                errorExit("Fatal Error", "In blueConnect() and unable to close socket during connection failure" + e2.getMessage() + ".");
+                errorExit("Fatal Error", "In onPause() and failed to close socket."
+                        + e2.getMessage() + ".");
             }
         }
+
+    }
+
+    public void recStream(){
+        InputStream inStream;
+        byte[] buffer = new byte[2];
+        int bytes;
+        int result;
+
         try {
-            socket.close();
-        } catch (IOException e2) {
-            errorExit("Fatal Error", "In blueConnect() and failed to close socket." + e2.getMessage() + ".");
-        }
+            inStream = socket.getInputStream();
+            bytes = inStream.read(buffer, 0, 2);
+            int val1 = buffer[0];
+            changeT(Integer.toString(val1));
+            int val2 = buffer[1];
+            changeT(Integer.toString(val2));
+            if (bytes == 2) {
+                result = ((val1 * 256) + val2);
+                syncSuccess.setText(Integer.toString(result));
+            } else {syncSuccess.setText("didn't work.");}
+        } catch (IOException s) {
+            errorExit("Fatal Error", "In blueConnect() and input stream creation failed:"
+                    + s.getMessage() + ".");}
+    }
+
+    public void sendStream(){
+        OutputStream outStream;
+        byte[] cmd = {1};
+
+        try {
+            outStream = socket.getOutputStream();
+            outStream.write(cmd);
+        } catch (IOException s) {
+            errorExit("Fatal Error", "Failed to send command:" + s.getMessage() + ".");}
+    }
+    public void mirror(){
+        makeDevice();
+        makeSocket();
+        makeConnection();
+        sendStream();
+        closeConnection();
     }
 }

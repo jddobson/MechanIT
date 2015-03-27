@@ -1,3 +1,8 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,27 +18,37 @@
         android:id="@+id/manButton"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:text="connect"
+        android:text="Enable Bluetooth"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:onClick="btState"/>
 
     <Button
-        android:id="@+id/cmdButton"
+        android:id="@+id/rxButton"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:text="manage connection"
+        android:text="Receive Data"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:layout_below="@+id/manButton"
         android:onClick="blueConnect"/>
+
+    <Button
+        android:id="@+id/txButton"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:text="Send CMD"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/rxButton"
+        android:onClick="blueSender"/>
 
     <TextView
         android:id="@+id/view_sync_textView"
         android:text="@string/sync_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cmdButton"/>
+        android:layout_below="@+id/txButton"/>
 
     <TextView
         android:id="@+id/view_syncSuccess"
@@ -43,7 +58,8 @@
         android:layout_toRightOf="@+id/view_sync_textView"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_below="@+id/cmdButton"/>
+        android:layout_below="@+id/txButton"/>
 
 
 </RelativeLayout>
+</ScrollView>
