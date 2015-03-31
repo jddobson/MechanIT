@@ -79,6 +79,11 @@ void COBD::clearDTC()
 	write("04\r");
 	receive(0, 1000);
 }
+void COBD::rcvDTC()
+{
+	write("03\r");
+	receive(OBD_RECV_BUF_SIZE, 10000);
+}
 
 bool COBD::available()
 {
