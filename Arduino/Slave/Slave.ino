@@ -1,5 +1,5 @@
-#include <Wire.h>
 #include <OBD.h>
+#include <Wire.h>
 #include <SoftwareSerial.h>   //Software Serial Port
 #define RxD A2
 #define TxD A3
@@ -10,7 +10,9 @@ SoftwareSerial blueSerial(RxD,TxD);
 static byte pidArray[]= {PID_DISTANCE};
 
 static const byte CDTC = 1;
-static const byte SLEEP = 2;
+static const byte RDTC = 2;
+
+int sleep = 0;
 
 void setup() 
 { 
@@ -22,8 +24,11 @@ void setup()
 
 void loop() 
 {
-  blueConnect();
-  if (blueSerial.isListening()) {
+  int pwr = obd.getVoltage();
+  if (pwr > 0) {
+    obd.wakeup();
+    sleep = 0;
+    blueConnect();
     if (blueSerial.available()) {
       recCMD();
     }else {
@@ -32,8 +37,10 @@ void loop()
         getCode(pidArray[i]);
         i++;}
     }
-  }
-  blueSerial.end();
+    blueSerial.end();
+  } else if (sleep == 0){
+    sleep = 1;
+    obd.sleep();}
 }
   
 void blueConnect()
@@ -56,7 +63,10 @@ void recCMD()
   
   if (blueSerial.available() > 0) {
     newByte = blueSerial.read();
-    
+    if (newByte == CDTC) {
+      obd.clearDTC();
+    } else if (newByte == RDTC) {
+      delay(100);
     }
   }
 }
