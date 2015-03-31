@@ -158,16 +158,16 @@ public class SyncData extends ActionBarActivity {
 
     public void recStream(){
         InputStream inStream;
-        byte[] buffer = new byte[2];
+        byte[] buffer = new byte[4];
         int bytes;
         int result;
 
         try {
             inStream = socket.getInputStream();
-            bytes = inStream.read(buffer, 0, 2);
-            int val1 = buffer[0];
+            bytes = inStream.read(buffer, 0, 4);
+            int val1 = buffer[2];
             changeT(Integer.toString(val1));
-            int val2 = buffer[1];
+            int val2 = buffer[3];
             changeT(Integer.toString(val2));
             if (bytes == 2) {
                 result = ((val1 * 256) + val2);
@@ -187,12 +187,5 @@ public class SyncData extends ActionBarActivity {
             outStream.write(cmd);
         } catch (IOException s) {
             errorExit("Fatal Error", "Failed to send command:" + s.getMessage() + ".");}
-    }
-    public void mirror(){
-        makeDevice();
-        makeSocket();
-        makeConnection();
-        sendStream();
-        closeConnection();
     }
 }
