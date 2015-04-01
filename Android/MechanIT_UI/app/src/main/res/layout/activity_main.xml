@@ -107,7 +107,7 @@
 </RelativeLayout>
     <!-- Side navigation drawer UI -->
     <ListView
-        android:id="@+id/navList"
+        android:id="@+id/navList0"
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="left|start"

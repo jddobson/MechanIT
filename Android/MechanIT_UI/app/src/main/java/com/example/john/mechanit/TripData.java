@@ -1,9 +1,12 @@
 package com.example.john.mechanit;
 
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 public class TripData extends ActionBarActivity {
@@ -12,7 +15,15 @@ public class TripData extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_data);
+        // Navigation drawer
+        final String[] values = getResources().getStringArray(R.array.nav_drawer_items);
+        ((ListView) findViewById(R.id.navList2)).setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, values));
+        NavigationDrawerSetup nds = new NavigationDrawerSetup((ListView) findViewById(R.id.navList2),
+                (DrawerLayout) findViewById(R.id.drawer_layout), values, getSupportActionBar(), this);
+        nds.configureDrawer();
     }
+
+
 
 
     @Override
