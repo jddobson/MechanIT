@@ -123,6 +123,8 @@ public:
 	virtual bool setProtocol(OBD_PROTOCOLS h = PROTO_AUTO);
 	// clear diagnostic trouble code
 	virtual void clearDTC();
+	// receive diagnostic trouble codes
+	virtual void rcvDTC();
 	// get battery voltage (in 0.1V, e.g. 125 for 12.5V, works without ECU)
 	virtual int getVoltage();
 	// send query for specified PID

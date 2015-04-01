@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.UUID;
 
@@ -157,22 +158,36 @@ public class SyncData extends ActionBarActivity {
     }
 
     public void recStream(){
-        InputStream inStream;
-        byte[] buffer = new byte[2];
-        int bytes;
-        int result;
+        InputStreamReader inStream;
+        char[] buf = new char[128];
+        int n;
+        int b1;
+        int b2;
+        int val;
+        String result = "Result for PID: ";
 
         try {
-            inStream = socket.getInputStream();
-            bytes = inStream.read(buffer, 0, 2);
-            int val1 = buffer[0];
-            changeT(Integer.toString(val1));
-            int val2 = buffer[1];
-            changeT(Integer.toString(val2));
-            if (bytes == 2) {
-                result = ((val1 * 256) + val2);
-                syncSuccess.setText(Integer.toString(result));
-            } else {syncSuccess.setText("didn't work.");}
+            inStream = new InputStreamReader(socket.getInputStream(), "UTF-8");
+            n = inStream.read(buf);
+            if ((buf[n-11]=='1') && (buf[n-9]=='3') && (buf[n-8]=='1')) {
+              b1 = (Character.getNumericValue(buf[n-6])*10)+Character.getNumericValue(buf[n-5]);
+              b2 = (Character.getNumericValue(buf[n-3])*10)+Character.getNumericValue(buf[n-2]);
+              val = (b1*256)+b2;
+              result = result + buf[n-11] + "x" + buf[n-9] + buf[n-8] + " = " + val;
+            } else result = "error";
+
+            //int val1 = buffer[0];
+            //changeT(Integer.toString(val1));
+            //int val2 = buffer[1];
+            //changeT(Integer.toString(val2));
+            //int val3 = buffer[2];
+            //changeT(Integer.toString(val3));
+            //int val4 = buffer[3];
+            //changeT(Integer.toString(val4));
+            //if ((val1 >= 0) && (val2 >= 0)) {
+            //    result = ((val1 * 256) + val2);
+                syncSuccess.setText(result);
+            //} else {syncSuccess.setText("didn't work.");}
         } catch (IOException s) {
             errorExit("Fatal Error", "In blueConnect() and input stream creation failed:"
                     + s.getMessage() + ".");}
@@ -184,15 +199,8 @@ public class SyncData extends ActionBarActivity {
 
         try {
             outStream = socket.getOutputStream();
-            outStream.write(cmd);
+            outStream.write(cmd[0]);
         } catch (IOException s) {
             errorExit("Fatal Error", "Failed to send command:" + s.getMessage() + ".");}
-    }
-    public void mirror(){
-        makeDevice();
-        makeSocket();
-        makeConnection();
-        sendStream();
-        closeConnection();
     }
 }
