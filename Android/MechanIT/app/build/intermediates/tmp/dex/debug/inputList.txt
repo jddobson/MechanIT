@@ -1,5 +1,0 @@
-C:\Users\Rameina91\AndroidStudioProjects\MechanIT\app\build\intermediates\classes\debug
-C:\Users\Rameina91\AndroidStudioProjects\MechanIT\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-e212c77bc83a3d42fa3d4951c8fc16dec377ba20.jar
-C:\Users\Rameina91\AndroidStudioProjects\MechanIT\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-f220a109b6a756b8d90449bde177c4b4e6d20fe2.jar
-C:\Users\Rameina91\AndroidStudioProjects\MechanIT\app\build\intermediates\pre-dexed\debug\classes-91b838128862454c50557441ec32d1c7473d6b01.jar
-C:\Users\Rameina91\AndroidStudioProjects\MechanIT\app\build\intermediates\pre-dexed\debug\classes-ec6befe6c448cae2bc44b3aeb8cdf6388ea3fe5a.jar
