@@ -29,5 +29,13 @@
     <string name="title_activity_setup">Setup</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>Maintenance</item>
+        <item>Trip Data</item>
+        <item>Settings</item>
+        <item>Notes</item>
+
+    </string-array>
 
 </resources>
