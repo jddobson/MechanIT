@@ -125,7 +125,7 @@
     </LinearLayout>
 
     <LinearLayout
-    android:id="@+id/tire_para_layout"
+    android:id="@+id/tire_life_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/view_mileage_layout">
@@ -134,12 +134,12 @@
 
     <TextView
         android:id="@+id/view_tire_textView"
-        android:text="Tire Change:"
+        android:text="Miles until next tire change:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/view_tire_para"
+        android:id="@+id/view_tire_life"
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -149,21 +149,21 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/oil_para_layout"
+        android:id="@+id/oil_life_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tire_para_layout">
+        android:layout_below="@id/tire_life_layout">
 
 
 
         <TextView
             android:id="@+id/view_oil_textView"
-            android:text="Oil Change:"
+            android:text="Miles until next oil change:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/view_oil_para"
+            android:id="@+id/view_oil_life"
             android:text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -173,21 +173,21 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/spark_para_layout"
+        android:id="@+id/spark_life_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/oil_para_layout">
+        android:layout_below="@id/oil_life_layout">
 
 
 
         <TextView
             android:id="@+id/view_spark_textView"
-            android:text="Spark Plug Change:"
+            android:text="Miles until next spark plug change:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/view_spark_para"
+            android:id="@+id/view_spark_life"
             android:text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

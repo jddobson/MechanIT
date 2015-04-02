@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,12 +22,14 @@ import java.util.UUID;
 public class SyncData extends ActionBarActivity {
 
     private final static int REQUEST_ENABLE_BT = 1;
+    public final static String Data = "dataKey";
+    public final static String Mileage = "mileageKey";
 
     private BluetoothAdapter adapter;
     private BluetoothSocket socket;
     private BluetoothDevice device;
 
-    TextView syncSuccess;
+    public SharedPreferences userInfo;
 
     // Well known SPP UUID
     private static final UUID MY_UUID =
@@ -35,13 +38,12 @@ public class SyncData extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sync_data);
-
-        syncSuccess = (TextView) findViewById(R.id.view_syncSuccess);
+        setContentView(R.layout.activity_main);
 
         adapter = BluetoothAdapter.getDefaultAdapter();
-    }
 
+        btState();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,15 +67,20 @@ public class SyncData extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
     public void changeT(String message)
     {
         Toast str = Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT);
         str.show();
     }
 
-    public void btState(View view) {
+    private void errorExit(String title, String message){
+        Toast msg = Toast.makeText(getBaseContext(),
+                title + " - " + message, Toast.LENGTH_LONG);
+        msg.show();
+        finish();
+    }
+
+    public void btState() {
         // Check for Bluetooth support and then check to make sure it is turned on
 
         // Emulator doesn't support Bluetooth and will return null
@@ -87,17 +94,11 @@ public class SyncData extends ActionBarActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             }
+            blueConnect();
         }
     }
 
-    private void errorExit(String title, String message){
-        Toast msg = Toast.makeText(getBaseContext(),
-                title + " - " + message, Toast.LENGTH_LONG);
-        msg.show();
-        finish();
-    }
-
-    public void blueConnect(View view) {
+    public void blueConnect() {
         makeDevice();
         makeSocket();
         makeConnection();
@@ -105,11 +106,11 @@ public class SyncData extends ActionBarActivity {
         closeConnection();
     }
 
-    public void blueSender(View view) {
+    public void blueSender(int cmd) {
         makeDevice();
         makeSocket();
         makeConnection();
-        sendStream();
+        sendStream(cmd);
         closeConnection();
     }
 
@@ -158,6 +159,8 @@ public class SyncData extends ActionBarActivity {
     }
 
     public void recStream(){
+        if (userInfo.contains(Mileage)) {
+            int mileage = userInfo.getInt(Mileage,0);}
         InputStreamReader inStream;
         char[] buf = new char[128];
         int n;
@@ -170,36 +173,25 @@ public class SyncData extends ActionBarActivity {
             inStream = new InputStreamReader(socket.getInputStream(), "UTF-8");
             n = inStream.read(buf);
             if ((buf[n-11]=='1') && (buf[n-9]=='3') && (buf[n-8]=='1')) {
-              b1 = (Character.getNumericValue(buf[n-6])*10)+Character.getNumericValue(buf[n-5]);
-              b2 = (Character.getNumericValue(buf[n-3])*10)+Character.getNumericValue(buf[n-2]);
-              val = (b1*256)+b2;
-              result = result + buf[n-11] + "x" + buf[n-9] + buf[n-8] + " = " + val;
-            } else result = "error";
-
-            //int val1 = buffer[0];
-            //changeT(Integer.toString(val1));
-            //int val2 = buffer[1];
-            //changeT(Integer.toString(val2));
-            //int val3 = buffer[2];
-            //changeT(Integer.toString(val3));
-            //int val4 = buffer[3];
-            //changeT(Integer.toString(val4));
-            //if ((val1 >= 0) && (val2 >= 0)) {
-            //    result = ((val1 * 256) + val2);
-                syncSuccess.setText(result);
-            //} else {syncSuccess.setText("didn't work.");}
+                b1 = (Character.getNumericValue(buf[n-6])*10)+Character.getNumericValue(buf[n-5]);
+                b2 = (Character.getNumericValue(buf[n-3])*10)+Character.getNumericValue(buf[n-2]);
+                val = ((b1*256)+b2);
+                result = result + buf[n-11] + "x" + buf[n-9] + buf[n-8] + " = " + val;
+                if (val >= 0) {
+                    blueSender(1);}
+            } else result = "Failed to retrieve data, please try again.";
+            changeT(result);
         } catch (IOException s) {
             errorExit("Fatal Error", "In blueConnect() and input stream creation failed:"
                     + s.getMessage() + ".");}
     }
 
-    public void sendStream(){
+    public void sendStream(int cmd){
         OutputStream outStream;
-        byte[] cmd = {1};
 
         try {
             outStream = socket.getOutputStream();
-            outStream.write(cmd[0]);
+            outStream.write(cmd);
         } catch (IOException s) {
             errorExit("Fatal Error", "Failed to send command:" + s.getMessage() + ".");}
     }

@@ -33,22 +33,12 @@
         android:layout_below="@+id/manButton"
         android:onClick="blueConnect"/>
 
-    <Button
-        android:id="@+id/txButton"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:text="Send CMD"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:layout_below="@+id/rxButton"
-        android:onClick="blueSender"/>
-
     <TextView
         android:id="@+id/view_sync_textView"
         android:text="@string/sync_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txButton"/>
+        android:layout_below="@+id/rxButton"/>
 
     <TextView
         android:id="@+id/view_syncSuccess"
@@ -58,7 +48,7 @@
         android:layout_toRightOf="@+id/view_sync_textView"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_below="@+id/txButton"/>
+        android:layout_below="@+id/rxButton"/>
 
 
 </RelativeLayout>

@@ -23,7 +23,9 @@ public class EditSettings extends ActionBarActivity {
     TextView tire;
     TextView oil;
     TextView spark;
-
+    TextView tireChange;
+    TextView oilChange;
+    TextView sparkChange;
 
     public static final String Nickname = "nicknameKey";
     public static final String Make = "makeKey";
@@ -33,6 +35,12 @@ public class EditSettings extends ActionBarActivity {
     public static final String Tire = "tireKey";
     public static final String Oil = "oilKey";
     public static final String Spark = "sparkKey";
+    public static final String TireLife = "tireLifeKey";
+    public static final String OilLife = "oilLifeKey";
+    public static final String SparkLife = "sparkLifeKey";
+    public static final String TireChange = "tireChangeKey";
+    public static final String OilChange = "oilChangeKey";
+    public static final String SparkChange = "sparkChangeKey";
 
     public SharedPreferences userInfo;
 
@@ -49,54 +57,45 @@ public class EditSettings extends ActionBarActivity {
         tire = (TextView) findViewById(R.id.edit_tire_para);
         oil = (TextView) findViewById(R.id.edit_oil_para);
         spark = (TextView) findViewById(R.id.edit_spark_para);
+        tireChange = (TextView) findViewById(R.id.edit_tire_change);
+        oilChange = (TextView) findViewById(R.id.edit_oil_change);
+        sparkChange = (TextView) findViewById(R.id.edit_spark_change);
 
         userInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
-        if (userInfo.contains(Nickname))
-        {
-            nickname.setText(userInfo.getString(Nickname, ""));
+        if (userInfo.contains(Nickname)) {
+            nickname.setText(userInfo.getString(Nickname, ""));}
 
-        }
-        if (userInfo.contains(Make))
-        {
-            make.setText(userInfo.getString(Make, ""));
+        if (userInfo.contains(Make)) {
+            make.setText(userInfo.getString(Make, ""));}
 
-        }
-        if (userInfo.contains(Model))
-        {
-            model.setText(userInfo.getString(Model, ""));
+        if (userInfo.contains(Model)) {
+            model.setText(userInfo.getString(Model, ""));}
 
-        }
-        if (userInfo.contains(Year))
-        {
-            year.setText(userInfo.getString(Year, ""));
+        if (userInfo.contains(Year)) {
+            year.setText(String.valueOf(userInfo.getInt(Year, 0)));}
 
-        }
-        if (userInfo.contains(Mileage))
-        {
-            mileage.setText(userInfo.getString(Mileage,""));
+        if (userInfo.contains(Mileage)) {
+            mileage.setText(String.valueOf(userInfo.getInt(Mileage,0)));}
 
-        }
+        if (userInfo.contains(Tire)) {
+            tire.setText(String.valueOf(userInfo.getInt(Tire,0)));}
 
-        if (userInfo.contains(Tire))
-        {
-            tire.setText(userInfo.getString(Tire,""));
+        if (userInfo.contains(Oil)) {
+            oil.setText(String.valueOf(userInfo.getInt(Oil,0)));}
 
-        }
+        if (userInfo.contains(Spark)) {
+            spark.setText(String.valueOf(userInfo.getInt(Spark,0)));}
 
-        if (userInfo.contains(Oil))
-        {
-            oil.setText(userInfo.getString(Oil,""));
+        if (userInfo.contains(TireChange)) {
+            tireChange.setText(String.valueOf(userInfo.getInt(TireChange,0)));}
 
-        }
+        if (userInfo.contains(OilChange)) {
+            oilChange.setText(String.valueOf(userInfo.getInt(OilChange,0)));}
 
-        if (userInfo.contains(Spark))
-        {
-            spark.setText(userInfo.getString(Spark,""));
-
-        }
+        if (userInfo.contains(SparkChange)) {
+            sparkChange.setText(String.valueOf(userInfo.getInt(SparkChange,0)));}
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,6 +117,11 @@ public class EditSettings extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void changeT(String message) {
+        Toast str = Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT);
+        str.show();
     }
 
     public boolean NameValidator(String str) {
@@ -152,47 +156,43 @@ public class EditSettings extends ActionBarActivity {
         EditText editTire = (EditText) findViewById(R.id.edit_tire_para);
         EditText editOil = (EditText) findViewById(R.id.edit_oil_para);
         EditText editSpark = (EditText) findViewById(R.id.edit_spark_para);
-
-
+        EditText eTireChange = (EditText) findViewById(R.id.edit_tire_change);
+        EditText eOilChange = (EditText) findViewById(R.id.edit_oil_change);
+        EditText eSparkChange = (EditText) findViewById(R.id.edit_spark_change);
 
         SharedPreferences.Editor edit = userInfo.edit();
 
-        if (NameValidator(editNickname.getText().toString().trim())) {
-            if (NameValidator(editMake.getText().toString().trim())) {
-                if (NameValidator(editModel.getText().toString().trim())) {
-                    if (NumberValidator(editYear.getText().toString().trim())) {
-                        if (NumberValidator(editMileage.getText().toString().trim())) {
-                            edit.putString("nicknameKey", editNickname.getText().toString().trim());
-                            edit.putString("makeKey", editMake.getText().toString().trim());
-                            edit.putString("modelKey", editModel.getText().toString().trim());
-                            edit.putString("yearKey", editYear.getText().toString().trim());
-                            edit.putString("mileageKey", editMileage.getText().toString().trim());
-                            edit.putString("tireKey", editTire.getText().toString().trim());
-                            edit.putString("oilKey", editOil.getText().toString().trim());
-                            edit.putString("sparkKey", editSpark.getText().toString().trim());
+        if (NameValidator(editMake.getText().toString().trim())) {
+            if (NameValidator(editModel.getText().toString().trim())) {
+                if (NumberValidator(editYear.getText().toString().trim())) {
+                    if (NumberValidator(editMileage.getText().toString().trim())) {
+                        edit.putString(Nickname, editNickname.getText().toString().trim());
+                        edit.putString(Make, editMake.getText().toString().trim());
+                        edit.putString(Model, editModel.getText().toString().trim());
+                        edit.putInt(Year, Integer.parseInt(editYear.getText().toString().trim()));
+                        edit.putInt(Mileage,
+                                Integer.parseInt(editMileage.getText().toString().trim()));
+                        edit.putInt(Tire, Integer.parseInt(editTire.getText().toString().trim()));
+                        edit.putInt(Oil, Integer.parseInt(editOil.getText().toString().trim()));
+                        edit.putInt(Spark, Integer.parseInt(editSpark.getText().toString().trim()));
 
-                            edit.commit();
+                        edit.putInt(TireChange,
+                                Integer.parseInt(eTireChange.getText().toString().trim()));
+                        edit.putInt(OilChange,
+                                Integer.parseInt(eOilChange.getText().toString().trim()));
+                        edit.putInt(SparkChange,
+                                Integer.parseInt(eSparkChange.getText().toString().trim()));
 
-                            Toast.makeText(this, "User info has been saved.", Toast.LENGTH_SHORT)
-                                    .show();
-                        } else {
-                            Toast.makeText(this, "Please only use numbers.", Toast.LENGTH_SHORT)
-                                    .show();
-                        }
-                    } else {
-                        Toast.makeText(this, "Please only use numbers.", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(this, "Please only use letters.", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(this, "Please only use letters.", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else {
-            Toast.makeText(this, "Please only use letters.", Toast.LENGTH_SHORT).show();
-        }
-
+                        edit.commit();
+                        changeT("User info saved.");
+                    } else changeT("Only use numbers for current mileage.");
+                } else changeT("Only use numbers for the year of your vehicle.");
+            } else changeT("Only use letters for the model of your vehicle.");
+        } else changeT("Only use letters for the make of your vehicle.");
+        edit.putInt(TireLife, (userInfo.getInt(TireChange,0) - userInfo.getInt(Tire,0)));
+        edit.putInt(OilLife, (userInfo.getInt(OilChange,0) - userInfo.getInt(Oil,0)));
+        edit.putInt(SparkLife, (userInfo.getInt(SparkChange,0) - userInfo.getInt(Spark,0)));
+        edit.commit();
     }
     /** Called when user clicks the Send button */
     public void sendMessage(View view) {
