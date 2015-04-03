@@ -1,3 +1,10 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#FC7A1B"
@@ -9,7 +16,8 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:paddingBottom="16dp">
+    android:paddingBottom="16dp"
+>
 
 
 
@@ -21,40 +29,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="#f8000000"
+/>
 
         <TextView
             android:id="@+id/view_make"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/view_nickname"
             android:layout_centerHorizontal="true"
+            android:textColor="#f8000000"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"/>
 
         <TextView
             android:id="@+id/view_model"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/view_nickname"
             android:layout_toRightOf="@id/view_make"
             android:layout_toEndOf="@id/view_make"
+            android:textColor="#f8000000"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"/>
 
         <TextView
             android:id="@+id/view_year"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/view_nickname"
             android:layout_toLeftOf="@id/view_make"
             android:layout_toStartOf="@id/view_make"
+            android:textColor="#f8000000"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"/>
 
@@ -71,6 +84,7 @@
             android:text="@string/car_mileage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#f8000000"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"/>
 
@@ -79,6 +93,7 @@
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#f8000000"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
@@ -95,6 +110,7 @@
     <TextView
         android:id="@+id/view_tire_textView"
         android:text="Miles until next tire change:"
+        android:textColor="#f8000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -103,6 +119,7 @@
         android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#f8000000"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
@@ -119,6 +136,7 @@
         <TextView
             android:id="@+id/view_oil_textView"
             android:text="Miles until next oil change:"
+            android:textColor="#f8000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -127,6 +145,7 @@
             android:text=""
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textColor="#f8000000"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
@@ -143,6 +162,7 @@
         <TextView
             android:id="@+id/view_spark_textView"
             android:text="Miles until next spark plug change:"
+            android:textColor="#f8000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -151,6 +171,7 @@
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#f8000000"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
@@ -166,3 +187,12 @@
 
 </RelativeLayout>
 </ScrollView>
+    <!-- Side navigation drawer UI -->
+    <ListView
+        android:id="@+id/navList1"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|start"
+        android:background="#ffeeeeee"/>
+
+</android.support.v4.widget.DrawerLayout>

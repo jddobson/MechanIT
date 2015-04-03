@@ -1,5 +1,5 @@
-C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\classes\debug
-C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-0943ea5621f154d46ba5b0d746083205627de97a.jar
-C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-f9acd3fa230bda4139402126a58d1321931c723b.jar
-C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-32e1cca4ec5e3d5225a6b8dc7f02141be58a07f9.jar
-C:\Users\Rameina91\MechanIT\Android\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-124a0a762e763951c1caba704305224630b8329c.jar
+F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\classes\debug
+F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-312a21b00aa2a0a91f87269cb48de11eac730aa9.jar
+F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-c8c57a8a6f975e8404131c21152e69dfb3b293cc.jar
+F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-3a27d5ddd13112159b9c05bd0ba5ec8188796c62.jar
+F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-f2b87ea38b9174061d3c58055576df9575f1924f.jar
