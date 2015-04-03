@@ -2,11 +2,14 @@ package com.mechanit.mechanitdroidapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -110,6 +113,13 @@ public class EditSettings extends ActionBarActivity {
 
         if (userInfo.contains(SparkChange)) {
             sparkChange.setText(String.valueOf(userInfo.getInt(SparkChange,0)));}
+
+        // Navigation drawer
+        final String[] values = getResources().getStringArray(R.array.nav_drawer_items);
+        ((ListView) findViewById(R.id.navList4)).setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, values));
+        NavigationDrawerSetup nds = new NavigationDrawerSetup((ListView) findViewById(R.id.navList4),
+                (DrawerLayout) findViewById(R.id.drawer_layout), values, getSupportActionBar(), this);
+        nds.configureDrawer();
     }
 
 

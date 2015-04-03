@@ -3,9 +3,12 @@ package com.mechanit.mechanitdroidapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
@@ -69,6 +72,13 @@ public class Maintenance extends ActionBarActivity {
 
         if (userInfo.contains(SparkLife)) {
             spark.setText(String.valueOf(userInfo.getInt(SparkLife,0)));}
+
+        // Navigation drawer
+        final String[] values = getResources().getStringArray(R.array.nav_drawer_items);
+        ((ListView) findViewById(R.id.navList1)).setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, values));
+        NavigationDrawerSetup nds = new NavigationDrawerSetup((ListView) findViewById(R.id.navList1),
+                (DrawerLayout) findViewById(R.id.drawer_layout), values, getSupportActionBar(), this);
+        nds.configureDrawer();
     }
     public void resetValues(View view) {
         Intent intent = new Intent(this, ResetValues.class);

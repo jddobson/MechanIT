@@ -67,6 +67,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mechanit.mechanitdroidapp.MainActivity" />
         </activity>
+        <activity
+            android:name=".NewNote"
+            android:label="@string/title_activity_new_note"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mechanit.mechanitdroidapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
