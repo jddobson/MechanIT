@@ -1602,8 +1602,6 @@ containing a value of this type.
     }
     public static final class style {
         public static final int Animation_AppCompat_DropDownUp=0x7f0b0000;
-        /**  Customize your theme here. 
-         */
         public static final int AppTheme=0x7f0b0001;
         public static final int Base_Animation_AppCompat_DropDownUp=0x7f0b0002;
         public static final int Base_TextAppearance_AppCompat=0x7f0b0003;
@@ -1663,18 +1661,18 @@ containing a value of this type.
         public static final int Base_ThemeOverlay_AppCompat_Dark=0x7f0b0039;
         public static final int Base_ThemeOverlay_AppCompat_Dark_ActionBar=0x7f0b003a;
         public static final int Base_ThemeOverlay_AppCompat_Light=0x7f0b003b;
-        public static final int Base_V11_Theme_AppCompat=0x7f0b00ed;
-        public static final int Base_V11_Theme_AppCompat_Dialog=0x7f0b00ee;
-        public static final int Base_V11_Theme_AppCompat_Light=0x7f0b00ef;
-        public static final int Base_V11_Theme_AppCompat_Light_Dialog=0x7f0b00f0;
-        public static final int Base_V14_Theme_AppCompat=0x7f0b00f1;
-        public static final int Base_V14_Theme_AppCompat_Dialog=0x7f0b00f2;
-        public static final int Base_V14_Theme_AppCompat_Light=0x7f0b00f3;
-        public static final int Base_V14_Theme_AppCompat_Light_Dialog=0x7f0b00f4;
-        public static final int Base_V21_Theme_AppCompat=0x7f0b00f5;
-        public static final int Base_V21_Theme_AppCompat_Dialog=0x7f0b00f6;
-        public static final int Base_V21_Theme_AppCompat_Light=0x7f0b00f7;
-        public static final int Base_V21_Theme_AppCompat_Light_Dialog=0x7f0b00f8;
+        public static final int Base_V11_Theme_AppCompat=0x7f0b00ee;
+        public static final int Base_V11_Theme_AppCompat_Dialog=0x7f0b00ef;
+        public static final int Base_V11_Theme_AppCompat_Light=0x7f0b00f0;
+        public static final int Base_V11_Theme_AppCompat_Light_Dialog=0x7f0b00f1;
+        public static final int Base_V14_Theme_AppCompat=0x7f0b00f2;
+        public static final int Base_V14_Theme_AppCompat_Dialog=0x7f0b00f3;
+        public static final int Base_V14_Theme_AppCompat_Light=0x7f0b00f4;
+        public static final int Base_V14_Theme_AppCompat_Light_Dialog=0x7f0b00f5;
+        public static final int Base_V21_Theme_AppCompat=0x7f0b00f6;
+        public static final int Base_V21_Theme_AppCompat_Dialog=0x7f0b00f7;
+        public static final int Base_V21_Theme_AppCompat_Light=0x7f0b00f8;
+        public static final int Base_V21_Theme_AppCompat_Light_Dialog=0x7f0b00f9;
         public static final int Base_V7_Theme_AppCompat=0x7f0b003c;
         public static final int Base_V7_Theme_AppCompat_Dialog=0x7f0b003d;
         public static final int Base_V7_Theme_AppCompat_Light=0x7f0b003e;
@@ -1852,6 +1850,7 @@ containing a value of this type.
         public static final int Widget_AppCompat_TextView_SpinnerItem=0x7f0b00ea;
         public static final int Widget_AppCompat_Toolbar=0x7f0b00eb;
         public static final int Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b00ec;
+        public static final int tView=0x7f0b00ed;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.

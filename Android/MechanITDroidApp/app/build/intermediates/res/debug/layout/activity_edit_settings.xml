@@ -175,8 +175,7 @@
         <TextView
             android:id="@+id/spark_para_textView"
             android:text="Miles since spark plugs replaced:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            style="@style/tView"/>
 
         <EditText
             android:id="@+id/edit_spark_para"
@@ -255,13 +254,13 @@
         <TextView
             android:id="@+id/spark_change_textView"
             android:text="Miles per spark plug replacement: "
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"/>
 
         <EditText
             android:id="@+id/edit_spark_change"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint="@string/edit_message"
             android:text="" />
     </LinearLayout>
@@ -269,6 +268,7 @@
     <Button
        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:onClick="sendMessage"
         android:layout_below="@id/spark_change_layout"
         android:background="@drawable/savebutton"/>
