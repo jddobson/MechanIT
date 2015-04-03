@@ -1,5 +1,6 @@
 package com.mechanit.mechanitdroidapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
@@ -21,7 +22,6 @@ public class ResetValues extends ActionBarActivity {
     public static final String Make = "makeKey";
     public static final String Model = "modelKey";
     public static final String Year = "yearKey";
-    public static final String Mileage = "mileageKey";
     public static final String Tire = "tireKey";
     public static final String Oil = "oilKey";
     public static final String Spark = "sparkKey";
@@ -60,6 +60,7 @@ public class ResetValues extends ActionBarActivity {
     }
 
     public void resetOil(View view) {
+
         SharedPreferences.Editor edit = userInfo.edit();
         edit.putInt(OilLife, userInfo.getInt(OilChange, 0));
         edit.putInt(Oil, 0);

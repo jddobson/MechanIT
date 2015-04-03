@@ -64,7 +64,7 @@ ADDED from AndroidManifest.xml:26:13
 		ADDED from AndroidManifest.xml:28:17
 	android:name
 		ADDED from AndroidManifest.xml:27:17
-activity#com.mechanit.mechanitdroidapp.ViewUserInfo
+activity#com.mechanit.mechanitdroidapp.Maintenance
 ADDED from AndroidManifest.xml:30:9
 	android:label
 		ADDED from AndroidManifest.xml:32:13
@@ -88,6 +88,22 @@ ADDED from AndroidManifest.xml:46:9
 		ADDED from AndroidManifest.xml:49:13
 	android:name
 		ADDED from AndroidManifest.xml:47:13
+activity#com.mechanit.mechanitdroidapp.TripData
+ADDED from AndroidManifest.xml:54:9
+	android:label
+		ADDED from AndroidManifest.xml:56:13
+	android:parentActivityName
+		ADDED from AndroidManifest.xml:57:13
+	android:name
+		ADDED from AndroidManifest.xml:55:13
+activity#com.mechanit.mechanitdroidapp.Notes
+ADDED from AndroidManifest.xml:62:9
+	android:label
+		ADDED from AndroidManifest.xml:64:13
+	android:parentActivityName
+		ADDED from AndroidManifest.xml:65:13
+	android:name
+		ADDED from AndroidManifest.xml:63:13
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.android.support:appcompat-v7:22.0.0:20:5

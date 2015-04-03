@@ -8,14 +8,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.UUID;
 
 
@@ -27,14 +24,18 @@ public class SyncData extends ActionBarActivity {
     private BluetoothSocket socket;
     private BluetoothDevice device;
 
+    TextView nickname;
+    TextView make;
+    TextView model;
+    TextView year;
     TextView syncSuccess;
 
     public SharedPreferences userInfo;
 
-    //byte SYNC = 0;
-    byte CDTC = 1;
-    //byte RDTC = 2;
-
+    public static final String Nickname = "nicknameKey";
+    public static final String Make = "makeKey";
+    public static final String Model = "modelKey";
+    public static final String Year = "yearKey";
     public static final String LastVal = "lastValue";
     public static final String Mileage = "mileageKey";
     public static final String Tire = "tireKey";
@@ -53,16 +54,31 @@ public class SyncData extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sync_data);
 
+        nickname = (TextView) findViewById(R.id.view_nickname);
+        make = (TextView) findViewById(R.id.view_make);
+        model = (TextView) findViewById(R.id.view_model);
+        year = (TextView) findViewById(R.id.view_year);
         syncSuccess = (TextView) findViewById(R.id.view_syncSuccess);
 
         adapter = BluetoothAdapter.getDefaultAdapter();
 
         userInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+        if (userInfo.contains(Nickname)) {
+            nickname.setText(userInfo.getString(Nickname, ""));}
+
+        if (userInfo.contains(Make)) {
+            make.setText(userInfo.getString(Make, ""));}
+
+        if (userInfo.contains(Model)) {
+            model.setText(userInfo.getString(Model, ""));}
+
+        if (userInfo.contains(Year)) {
+            year.setText(String.valueOf(userInfo.getInt(Year, 0)));}
     }
 
 
-    public void changeT(String message)
-    {
+    public void changeT(String message) {
         Toast str = Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT);
         str.show();
     }
@@ -71,7 +87,7 @@ public class SyncData extends ActionBarActivity {
         // Check for Bluetooth support and then check to make sure it is turned on
 
         // Emulator doesn't support Bluetooth and will return null
-        if(adapter==null) {
+        if (adapter == null) {
             errorExit("Fatal Error", "Bluetooth Not supported. Aborting.");
         } else {
             if (adapter.isEnabled()) {
@@ -84,7 +100,7 @@ public class SyncData extends ActionBarActivity {
         }
     }
 
-    private void errorExit(String title, String message){
+    private void errorExit(String title, String message) {
         Toast msg = Toast.makeText(getBaseContext(),
                 title + " - " + message, Toast.LENGTH_LONG);
         msg.show();
@@ -99,24 +115,16 @@ public class SyncData extends ActionBarActivity {
         closeConnection();
     }
 
-    public void blueSender(View view) {
-        makeDevice();
-        makeSocket();
-        makeConnection();
-        sendStream(CDTC);
-        closeConnection();
-    }
-
     public void updateInfo(int n) {
         SharedPreferences.Editor edit = userInfo.edit();
         int lVal = userInfo.getInt(LastVal, 0);
-        int mileage=userInfo.getInt(Mileage,0);
-        int tire=userInfo.getInt(Tire,0);
-        int oil=userInfo.getInt(Oil,0);
-        int spark=userInfo.getInt(Spark,0);
-        int tireLife=userInfo.getInt(TireLife,0);
-        int oilLife=userInfo.getInt(OilLife,0);
-        int sparkLife=userInfo.getInt(SparkLife,0);
+        int mileage = userInfo.getInt(Mileage, 0);
+        int tire = userInfo.getInt(Tire, 0);
+        int oil = userInfo.getInt(Oil, 0);
+        int spark = userInfo.getInt(Spark, 0);
+        int tireLife = userInfo.getInt(TireLife, 0);
+        int oilLife = userInfo.getInt(OilLife, 0);
+        int sparkLife = userInfo.getInt(SparkLife, 0);
         int inc = n - lVal;
         edit.putInt(Mileage, mileage + inc);
         edit.putInt(Tire, tire + inc);
@@ -157,7 +165,8 @@ public class SyncData extends ActionBarActivity {
             socket.connect();
             //changeT("...Connection established and data link opened...");
         } catch (IOException e) {
-            changeT("Connection Failed");}
+            changeT("Connection Failed");
+        }
     }
 
     public void closeConnection() {
@@ -170,10 +179,9 @@ public class SyncData extends ActionBarActivity {
                         + e2.getMessage() + ".");
             }
         }
-
     }
 
-    public void recStream(){
+    public void recStream() {
         InputStreamReader inStream;
         char[] buf = new char[32];
         int n;
@@ -186,26 +194,18 @@ public class SyncData extends ActionBarActivity {
             inStream = new InputStreamReader(socket.getInputStream(), "UTF-8");
             n = inStream.read(buf, 0, buf.length);
 
-            if ((n >= 8)&&((buf[n-7]=='1') && (buf[n-6]=='3') && (buf[n-5]=='1'))) {
-                b1 = (Character.getNumericValue(buf[n-4])*10)+Character.getNumericValue(buf[n-3]);
-                b2 = (Character.getNumericValue(buf[n-2])*10)+Character.getNumericValue(buf[n-1]);
-                val = (int) (((b1*256)+b2)*.6214);
-                result = result + buf[n-7] + "x" + buf[n-6] + buf[n-5] + " = " + val;
+            if ((n >= 8) && ((buf[n - 7] == '1') && (buf[n - 6] == '3') && (buf[n - 5] == '1'))) {
+                b1 = (Character.getNumericValue(buf[n - 4]) * 10) + Character.getNumericValue(buf[n - 3]);
+                b2 = (Character.getNumericValue(buf[n - 2]) * 10) + Character.getNumericValue(buf[n - 1]);
+                val = (int) (((b1 * 256) + b2) * .6214);
+                result = result + buf[n - 7] + "x" + buf[n - 6] + buf[n - 5] + " = " + val;
                 updateInfo(val);
             } else result = "bytes read: " + n;
 
             syncSuccess.setText(result);
         } catch (IOException s) {
             errorExit("Fatal Error", "In recStream() and input stream creation failed:"
-                    + s.getMessage() + ".");}
-    }
-
-    public void sendStream(byte b){
-        OutputStream outStream;
-        try {
-            outStream = socket.getOutputStream();
-            outStream.write(b);
-        } catch (IOException s) {
-            errorExit("Fatal Error", "Failed in sendStream() :" + s.getMessage() + ".");}
+                    + s.getMessage() + ".");
+        }
     }
 }

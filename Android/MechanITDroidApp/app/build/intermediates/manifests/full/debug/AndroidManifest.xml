@@ -34,7 +34,7 @@
                 android:value="com.mechanit.mechanitdroidapp.MainActivity" />
         </activity>
         <activity
-            android:name="com.mechanit.mechanitdroidapp.ViewUserInfo"
+            android:name="com.mechanit.mechanitdroidapp.Maintenance"
             android:label="@string/title_activity_view_user_info"
             android:parentActivityName="com.mechanit.mechanitdroidapp.MainActivity" >
             <meta-data
@@ -52,10 +52,26 @@
         <activity
             android:name="com.mechanit.mechanitdroidapp.ResetValues"
             android:label="@string/title_activity_reset_values"
-            android:parentActivityName="com.mechanit.mechanitdroidapp.ViewUserInfo" >
+            android:parentActivityName="com.mechanit.mechanitdroidapp.Maintenance" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mechanit.mechanitdroidapp.ViewUserInfo" />
+                android:value=".Maintenance" />
+        </activity>
+        <activity
+            android:name="com.mechanit.mechanitdroidapp.TripData"
+            android:label="@string/title_activity_trip_data"
+            android:parentActivityName="com.mechanit.mechanitdroidapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mechanit.mechanitdroidapp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.mechanit.mechanitdroidapp.Notes"
+            android:label="@string/title_activity_notes"
+            android:parentActivityName="com.mechanit.mechanitdroidapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mechanit.mechanitdroidapp.MainActivity" />
         </activity>
     </application>
 

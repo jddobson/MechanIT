@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -48,16 +46,12 @@ public class MainActivity extends ActionBarActivity {
             model.setText(userInfo.getString(Model, ""));}
 
         if (userInfo.contains(Year)) {
-            year.setText(String.valueOf(userInfo.getInt(Year,0)));}
+            year.setText(String.valueOf(userInfo.getInt(Year, 0)));}
     }
-
-
-
-   
 
     /** Called when the user clicks the User Information button */
     public void viewUserInfo (View view) {
-        Intent intent = new Intent(this, ViewUserInfo.class);
+        Intent intent = new Intent(this, Maintenance.class);
         startActivity(intent);
     }
 
@@ -70,6 +64,17 @@ public class MainActivity extends ActionBarActivity {
     /** Called when the user clicks the Sync Data button */
     public void syncData (View view) {
         Intent intent = new Intent(this, SyncData.class);
+        startActivity(intent);
+    }
+    /** Called when the user clicks the Trip Data button */
+    public void tripData (View view) {
+        Intent intent = new Intent(this, TripData.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Notes button */
+    public void notes (View view) {
+        Intent intent = new Intent(this, Notes.class);
         startActivity(intent);
     }
 }
