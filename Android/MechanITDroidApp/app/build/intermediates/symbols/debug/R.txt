@@ -405,8 +405,10 @@ int drawable savebutton 0x7f02006c
 int drawable savepress 0x7f02006d
 int drawable saveunpress 0x7f02006e
 int drawable syncbutton 0x7f02006f
-int drawable syncpress 0x7f020070
-int drawable syncunpress 0x7f020071
+int drawable syncdpress 0x7f020070
+int drawable syncdunpress 0x7f020071
+int drawable syncpress 0x7f020072
+int drawable syncunpress 0x7f020073
 int id action_bar 0x7f090031
 int id action_bar_activity_content 0x7f090000
 int id action_bar_container 0x7f090030

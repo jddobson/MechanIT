@@ -1373,8 +1373,10 @@ containing a value of this type.
         public static final int savepress=0x7f02006d;
         public static final int saveunpress=0x7f02006e;
         public static final int syncbutton=0x7f02006f;
-        public static final int syncpress=0x7f020070;
-        public static final int syncunpress=0x7f020071;
+        public static final int syncdpress=0x7f020070;
+        public static final int syncdunpress=0x7f020071;
+        public static final int syncpress=0x7f020072;
+        public static final int syncunpress=0x7f020073;
     }
     public static final class id {
         public static final int action_bar=0x7f090031;

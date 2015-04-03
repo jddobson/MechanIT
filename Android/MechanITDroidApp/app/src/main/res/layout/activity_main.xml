@@ -119,6 +119,7 @@
             android:textSize="18dp"
             android:id="@+id/syncButton"
             android:layout_below="@id/table_layout"
+
             android:onClick="syncData"/>
 
 

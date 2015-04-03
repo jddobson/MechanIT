@@ -9,18 +9,18 @@
         <dex dex="F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-c8c57a8a6f975e8404131c21152e69dfb3b293cc.jar" />
     </item>
     <item
-        jar="F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-f2b87ea38b9174061d3c58055576df9575f1924f.jar" />
-    </item>
-    <item
         jar="C:\Users\John\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
         <dex dex="F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-312a21b00aa2a0a91f87269cb48de11eac730aa9.jar" />
+    </item>
+    <item
+        jar="F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\pre-dexed\debug\classes-f2b87ea38b9174061d3c58055576df9575f1924f.jar" />
     </item>
     <item
         jar="F:\Libraries\Desktop\MechanITDroidApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\classes.jar"
