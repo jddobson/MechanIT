@@ -1,0 +1,83 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FC7A1B"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/view_nickname"
+            android:textSize="45sp"
+            android:text=""
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/view_make"
+            android:textSize="25sp"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_nickname"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/view_model"
+            android:textSize="25sp"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_nickname"
+            android:layout_toRightOf="@id/view_make"
+            android:layout_toEndOf="@id/view_make"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/view_year"
+            android:textSize="25sp"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_nickname"
+            android:layout_toLeftOf="@id/view_make"
+            android:layout_toStartOf="@id/view_make"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <Button
+            android:id="@+id/reset_oil"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:text="Changed Oil"
+            android:layout_below="@id/view_year"
+            android:onClick="resetOil"/>
+
+        <Button
+            android:id="@+id/reset_tires"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:text="Changed Tires"
+            android:layout_below="@id/reset_oil"
+            android:onClick="resetTires"/>
+
+        <Button
+            android:id="@+id/reset_spark"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:text="Changed Spark Plugs"
+            android:layout_below="@id/reset_tires"
+            android:onClick="resetSpark"/>
+    </RelativeLayout>
+</ScrollView>
