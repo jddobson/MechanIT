@@ -1,4 +1,3 @@
-#include <OBD.h>
 #include <Wire.h>
 #include <SoftwareSerial.h>   //Software Serial Port
 
@@ -9,85 +8,53 @@ static const byte SYNC = 0;
 static const byte CDTC = 1;
 static const byte RDTC = 2;
 
-COBD obd;
-
 SoftwareSerial blueSerial(RxD,TxD);
 
-static byte pidArray[]= {PID_RPM};
-
 int sleep = 0;
+byte newByte;
+char buf[32];
 
-void setup() 
-{ 
+void setup() { 
   Serial.begin(38400);
-  Serial.write("ATZ\r");
+  Serial.write("ATZ\r"); //reset software
   delay(500);
   while (Serial.available()) Serial.read();
-  Serial.write("ATE0\r");
+  Serial.write("ATE0\r"); // local echo turned off
   delay(100);
   while (Serial.available()) Serial.read();
+  Serial.write("ATS0\r"); //turn off spaces
+  delay(100);
   pinMode(RxD, INPUT);
   pinMode(TxD, OUTPUT);
 } 
 
-void loop() 
-{
-  //int pwr = obd.getVoltage();
-  //if (pwr > 0) {
-    //obd.wakeup();
-    //sleep = 0;
-    blueConnect();
-    //if (obd.isValidPID(pidArray[0])){
-    Serial.write("0131\r");
-    while (Serial.available()) {
-      char buf[32]; 
-      byte rcv = Serial.readBytesUntil('\r', buf, sizeof(buf));
-      if ((buf[rcv-11] == '1') && (buf[rcv-9] == '3') && (buf[rcv-8] == '1')) {
-        blueSerial.write(buf, rcv);
-        break;
-      }
-    }
-    delay(3000);
-    //} else {blueSerial.print('x');}
-    //if (blueSerial.available()) {
-    //  recCMD();
-    //}else {
-    //  int i = 0;
-    //  while (sizeof(pidArray) > i) {
-    //    getCode(pidArray[i]);
-    //    i++;}
-    //}
-    blueSerial.end();
-    //}else if (sleep == 0) {
-    //sleep = 1;
-    //obd.sleep();}
-}
-  
-void blueConnect()
-{
+void loop() { 
   blueSerial.begin(38400); //Set Bluetooth BaudRate to default baud rate 38400
+  //if (blueSerial.available() == 1) {
+    //newByte = blueSerial.read();
+    //if (newByte == SYNC) {
+      int i = 0;
+      while ((Serial.read() != '>') && (i < 50)) {
+        i++;
+      }
+      Serial.write("0131\r");
+      //while (Serial.available()) {
+        byte rcv = Serial.readBytesUntil('\r', buf, sizeof(buf));
+        //if ((buf[rcv-7] == '1') && (buf[rcv-6] == '3') && (buf[rcv-5] == '1')) {
+          blueSerial.write(buf, rcv);
+          delay(2000);
+        //}
+      //}
+    //}else if (newByte == CDTC) {      
+    //  Serial.write("04\r");
+    //} else if (newByte == RDTC) {
+    
+    //  Serial.write("03\r");
+      
+      //byte rcv = Serial.readBytesUntil('\r', buf, sizeof(buf));
+      //blueSerial.write(buf, rcv);
+    //}
+  //}
   blueSerial.flush();
-}
-
-void recCMD()
-{ 
-  byte newByte;
-  
-  if (blueSerial.available() > 0) {
-    newByte = blueSerial.read();
-    if (newByte == CDTC) {
-      obd.clearDTC();
-    } else if (newByte == RDTC) {
-      delay(100);
-    }
-  }
-}
-
-void getCode(byte pid)
-{
-  int value;
-  
-  if (obd.read(pid, value)) {
-    blueSerial.print(value);
-  }
+  blueSerial.end();
 }
