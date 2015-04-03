@@ -3,6 +3,7 @@ package com.mechanit.mechanitdroidapp;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.UUID;
@@ -22,14 +22,27 @@ import java.util.UUID;
 public class SyncData extends ActionBarActivity {
 
     private final static int REQUEST_ENABLE_BT = 1;
-    public final static String Data = "dataKey";
-    public final static String Mileage = "mileageKey";
 
     private BluetoothAdapter adapter;
     private BluetoothSocket socket;
     private BluetoothDevice device;
 
+    TextView syncSuccess;
+
     public SharedPreferences userInfo;
+
+    //byte SYNC = 0;
+    byte CDTC = 1;
+    //byte RDTC = 2;
+
+    public static final String LastVal = "lastValue";
+    public static final String Mileage = "mileageKey";
+    public static final String Tire = "tireKey";
+    public static final String Oil = "oilKey";
+    public static final String Spark = "sparkKey";
+    public static final String TireLife = "tireLifeKey";
+    public static final String OilLife = "oilLifeKey";
+    public static final String SparkLife = "sparkLifeKey";
 
     // Well known SPP UUID
     private static final UUID MY_UUID =
@@ -38,34 +51,15 @@ public class SyncData extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sync_data);
+
+        syncSuccess = (TextView) findViewById(R.id.view_syncSuccess);
 
         adapter = BluetoothAdapter.getDefaultAdapter();
 
-        btState();
+        userInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sync_data, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public void changeT(String message)
     {
@@ -73,14 +67,7 @@ public class SyncData extends ActionBarActivity {
         str.show();
     }
 
-    private void errorExit(String title, String message){
-        Toast msg = Toast.makeText(getBaseContext(),
-                title + " - " + message, Toast.LENGTH_LONG);
-        msg.show();
-        finish();
-    }
-
-    public void btState() {
+    public void btState(View view) {
         // Check for Bluetooth support and then check to make sure it is turned on
 
         // Emulator doesn't support Bluetooth and will return null
@@ -94,11 +81,17 @@ public class SyncData extends ActionBarActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             }
-            blueConnect();
         }
     }
 
-    public void blueConnect() {
+    private void errorExit(String title, String message){
+        Toast msg = Toast.makeText(getBaseContext(),
+                title + " - " + message, Toast.LENGTH_LONG);
+        msg.show();
+        finish();
+    }
+
+    public void blueConnect(View view) {
         makeDevice();
         makeSocket();
         makeConnection();
@@ -106,12 +99,35 @@ public class SyncData extends ActionBarActivity {
         closeConnection();
     }
 
-    public void blueSender(int cmd) {
+    public void blueSender(View view) {
         makeDevice();
         makeSocket();
         makeConnection();
-        sendStream(cmd);
+        sendStream(CDTC);
         closeConnection();
+    }
+
+    public void updateInfo(int n) {
+        SharedPreferences.Editor edit = userInfo.edit();
+        int lVal = userInfo.getInt(LastVal, 0);
+        int mileage=userInfo.getInt(Mileage,0);
+        int tire=userInfo.getInt(Tire,0);
+        int oil=userInfo.getInt(Oil,0);
+        int spark=userInfo.getInt(Spark,0);
+        int tireLife=userInfo.getInt(TireLife,0);
+        int oilLife=userInfo.getInt(OilLife,0);
+        int sparkLife=userInfo.getInt(SparkLife,0);
+        int inc = n - lVal;
+        edit.putInt(Mileage, mileage + inc);
+        edit.putInt(Tire, tire + inc);
+        edit.putInt(Oil, oil + inc);
+        edit.putInt(Spark, spark + inc);
+        edit.putInt(TireLife, tireLife - inc);
+        edit.putInt(OilLife, oilLife - inc);
+        edit.putInt(SparkLife, sparkLife - inc);
+        edit.putInt(LastVal, n);
+
+        edit.commit();
     }
 
     public void makeDevice() {
@@ -136,7 +152,6 @@ public class SyncData extends ActionBarActivity {
     }
 
     public void makeConnection() {
-
         // Establish the connection.  This will block until it connects.
         try {
             socket.connect();
@@ -159,10 +174,8 @@ public class SyncData extends ActionBarActivity {
     }
 
     public void recStream(){
-        if (userInfo.contains(Mileage)) {
-            int mileage = userInfo.getInt(Mileage,0);}
         InputStreamReader inStream;
-        char[] buf = new char[128];
+        char[] buf = new char[32];
         int n;
         int b1;
         int b2;
@@ -171,28 +184,28 @@ public class SyncData extends ActionBarActivity {
 
         try {
             inStream = new InputStreamReader(socket.getInputStream(), "UTF-8");
-            n = inStream.read(buf);
-            if ((buf[n-11]=='1') && (buf[n-9]=='3') && (buf[n-8]=='1')) {
-                b1 = (Character.getNumericValue(buf[n-6])*10)+Character.getNumericValue(buf[n-5]);
-                b2 = (Character.getNumericValue(buf[n-3])*10)+Character.getNumericValue(buf[n-2]);
-                val = ((b1*256)+b2);
-                result = result + buf[n-11] + "x" + buf[n-9] + buf[n-8] + " = " + val;
-                if (val >= 0) {
-                    blueSender(1);}
-            } else result = "Failed to retrieve data, please try again.";
-            changeT(result);
+            n = inStream.read(buf, 0, buf.length);
+
+            if ((n >= 8)&&((buf[n-7]=='1') && (buf[n-6]=='3') && (buf[n-5]=='1'))) {
+                b1 = (Character.getNumericValue(buf[n-4])*10)+Character.getNumericValue(buf[n-3]);
+                b2 = (Character.getNumericValue(buf[n-2])*10)+Character.getNumericValue(buf[n-1]);
+                val = (int) (((b1*256)+b2)*.6214);
+                result = result + buf[n-7] + "x" + buf[n-6] + buf[n-5] + " = " + val;
+                updateInfo(val);
+            } else result = "bytes read: " + n;
+
+            syncSuccess.setText(result);
         } catch (IOException s) {
-            errorExit("Fatal Error", "In blueConnect() and input stream creation failed:"
+            errorExit("Fatal Error", "In recStream() and input stream creation failed:"
                     + s.getMessage() + ".");}
     }
 
-    public void sendStream(int cmd){
+    public void sendStream(byte b){
         OutputStream outStream;
-
         try {
             outStream = socket.getOutputStream();
-            outStream.write(cmd);
+            outStream.write(b);
         } catch (IOException s) {
-            errorExit("Fatal Error", "Failed to send command:" + s.getMessage() + ".");}
+            errorExit("Fatal Error", "Failed in sendStream() :" + s.getMessage() + ".");}
     }
 }

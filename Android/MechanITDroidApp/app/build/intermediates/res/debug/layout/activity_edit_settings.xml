@@ -1,8 +1,12 @@
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FC7A1B"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
@@ -12,7 +16,6 @@
         android:id="@+id/car_nickname_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <TextView
             android:id="@+id/car_nickname_textView"
@@ -27,8 +30,6 @@
             android:hint="@string/edit_message" />
 
     </LinearLayout>
-
-
 
     <LinearLayout
         android:id="@+id/car_make_layout"
@@ -257,7 +258,7 @@
         android:layout_height="wrap_content"
         android:onClick="sendMessage"
         android:layout_below="@id/spark_change_layout"
-        android:text="@string/button_send"/>
+        android:background="@drawable/savebutton"/>
 
 </RelativeLayout>
-<!-- From: file:/C:/Users/Rameina91/MechanIT/Android/MechanITDroidApp/app/src/main/res/layout/activity_edit_settings.xml -->
+</ScrollView><!-- From: file:/C:/Users/Rameina91/MechanIT/Android/MechanITDroidApp/app/src/main/res/layout/activity_edit_settings.xml -->

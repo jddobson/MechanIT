@@ -49,6 +49,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mechanit.mechanitdroidapp.MainActivity" />
         </activity>
+        <activity
+            android:name="com.mechanit.mechanitdroidapp.ResetValues"
+            android:label="@string/title_activity_reset_values"
+            android:parentActivityName="com.mechanit.mechanitdroidapp.ViewUserInfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mechanit.mechanitdroidapp.ViewUserInfo" />
+        </activity>
     </application>
 
 </manifest>

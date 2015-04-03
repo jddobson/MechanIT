@@ -1,11 +1,13 @@
 package com.mechanit.mechanitdroidapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -19,16 +21,20 @@ public class ViewUserInfo extends ActionBarActivity {
     TextView oil;
     TextView spark;
 
-
-
     public static final String Nickname = "nicknameKey";
     public static final String Make = "makeKey";
     public static final String Model = "modelKey";
     public static final String Year = "yearKey";
     public static final String Mileage = "mileageKey";
+    public static final String Tire = "tireKey";
+    public static final String Oil = "oilKey";
+    public static final String Spark = "sparkKey";
     public static final String TireLife = "tireLifeKey";
     public static final String OilLife = "oilLifeKey";
     public static final String SparkLife = "sparkLifeKey";
+    public static final String TireChange = "tireChangeKey";
+    public static final String OilChange = "oilChangeKey";
+    public static final String SparkChange = "sparkChangeKey";
 
     public SharedPreferences userInfo;
 
@@ -61,38 +67,19 @@ public class ViewUserInfo extends ActionBarActivity {
             year.setText(String.valueOf(userInfo.getInt(Year,0)));}
 
         if (userInfo.contains(Mileage)) {
-            mileage.setText(String.valueOf(userInfo.getInt(Mileage,0)));}
+            mileage.setText(String.valueOf(userInfo.getInt(Mileage, 0)));}
 
         if (userInfo.contains(TireLife)) {
             tire.setText(String.valueOf(userInfo.getInt(TireLife,0)));}
 
         if (userInfo.contains(OilLife)) {
-            oil.setText(String.valueOf(userInfo.getInt(OilLife,0)));}
+            oil.setText(String.valueOf(userInfo.getInt(OilLife, 0)));}
 
         if (userInfo.contains(SparkLife)) {
             spark.setText(String.valueOf(userInfo.getInt(SparkLife,0)));}
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_view_user_info, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void resetValues(View view) {
+        Intent intent = new Intent(this, ResetValues.class);
+        startActivity(intent);
     }
 }
